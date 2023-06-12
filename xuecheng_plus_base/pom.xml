@@ -8,7 +8,8 @@
         <artifactId>xuecheng-plus-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <!--基于当前pom.xml找到父工程-->
-        <relativePath>../../xuecheng_plus_parent</relativePath>
+        <relativePath>../xuecheng_plus_parent</relativePath>
+
     </parent>
     <artifactId>xuecheng-plus-base</artifactId>
     <dependencies>
