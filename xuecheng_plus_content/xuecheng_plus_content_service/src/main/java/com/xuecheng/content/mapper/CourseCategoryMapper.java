@@ -11,11 +11,11 @@ import java.util.List;
  * 课程分类 Mapper 接口
  * </p>
  *
- * @author itcast
+ * @author mph
  */
 public interface CourseCategoryMapper extends BaseMapper<CourseCategory> {
 
-    //使用递归查询分类
+    //自定义递归查询课程分类方法
     public List<CourseCategoryTreeDto> selectTreeNodes(String id);
 
 }

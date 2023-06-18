@@ -11,7 +11,7 @@ import org.springframework.web.filter.CorsFilter;
  * @author mph
  * @version 1.0
  * @date 2023/6/14 13:49
- * @description TODO
+ * @description 跨域访问拦截器
  */
 @Configuration
 public class GlobalCorsConfig {

@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class PageResult<T> implements Serializable {
 
-    //数据列表
+    //数据列表（各种数据：课程、师资等）
     private List<T> items;
 
     //每页记录数

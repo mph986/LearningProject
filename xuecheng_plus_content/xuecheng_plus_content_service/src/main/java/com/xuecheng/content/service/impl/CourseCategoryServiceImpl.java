@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
  * @author mph
  * @version 1.0
  * @date 2023/6/15 9:32
- * @description TODO
+ * @description 课程分类信息查询实现类
  */
 @Slf4j
 @Service
@@ -30,22 +30,24 @@ public class CourseCategoryServiceImpl implements CourseCategoryService {
     public List<CourseCategoryTreeDto> queryTreeNodes(String id) {
 
         //递归查询分类信息
+        //找到所有节点
         List<CourseCategoryTreeDto> courseCategoryTreeDtos =
                 courseCategoryMapper.selectTreeNodes(id);
-        //找到每个节点的子节点，封装成List<CourseCategoryTreeDto>
 
-        //先将List转成Map，方便获取节点id。key：节点id  value：courseCategoryTreeDto对象
+        //封装成 List<CourseCategoryTreeDto>
+        //先将List转成Map，方便获取节点id  key：节点id  value：courseCategoryTreeDto对象
         Map<String, CourseCategoryTreeDto> mapTemp =
                 courseCategoryTreeDtos
+                        //filter过滤掉根节点 id：根节点 id  item：流中元素
                         .stream().filter(item -> !id.equals(item.getId()))
                         .collect(Collectors.toMap(
                                 CourseCategory::getId,
-                                value -> value, (key1,
-                                                 key2) -> key2));
+                                value -> value, (key1, key2) -> key2));
         //定义一个List作为最终返回的List
         List<CourseCategoryTreeDto> courseCategoryList = new ArrayList<>();
         //遍历List，并将子节点放入父节点的childrenTreeNodes
         courseCategoryTreeDtos.stream().filter(item -> !id.equals(item.getId())).forEach(item -> {
+            //list只放1-1、1-2，其他的放在childrenTreeNodes属性中
             if (item.getParentid().equals(id)) courseCategoryList.add(item);
             //找到父节点
             CourseCategoryTreeDto parentNode = mapTemp.get(item.getParentid());

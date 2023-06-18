@@ -18,7 +18,7 @@
     <modules>
         <module>xuecheng_plus_content_api</module>
         <module>xuecheng_plus_content_model</module>
-        <module>xuecheng_content_service</module>
+        <module>xuecheng_plus_content_service</module>
     </modules>
 
 

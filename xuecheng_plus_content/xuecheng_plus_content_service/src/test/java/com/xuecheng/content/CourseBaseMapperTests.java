@@ -24,8 +24,8 @@ class CourseBaseMapperTests {
     @Test
     void testCourseBaseMapper() {
 
-        //详细进行分页查询单元测试
-        //查询条件（前端传入）
+        //组织参数
+        //查询条件（请求体传入）
         QueryCourseParamsDto courseParamsDto = new QueryCourseParamsDto();
         courseParamsDto.setCourseName("Java");
 
@@ -40,14 +40,23 @@ class CourseBaseMapperTests {
         queryWrapper.eq(StringUtils.isNotEmpty(
                 courseParamsDto.getAuditStatus()),
                 CourseBase::getAuditStatus,
-                courseParamsDto.getCourseName());
-        //分页参数对象
+                courseParamsDto.getAuditStatus());
+        //根据课程发布状态查询 course_base.publish_status=？    有值，说明按课程发布状态查询
+        queryWrapper.eq(StringUtils.isNotEmpty(
+                        courseParamsDto.getPublishStatus()),
+                CourseBase::getStatus,
+                courseParamsDto.getPublishStatus());
+
+        //分页参数（请求行传入）
         PageParams pageParams = new PageParams();
         pageParams.setPageNo(1L);
         pageParams.setPageSize(2L);
 
         //创建分页参数对象
         Page<CourseBase> page = new Page<>(pageParams.getPageNo(), pageParams.getPageSize());
+
+
+        //正式查询
         //开始分页查询
         Page<CourseBase> pageResult = courseBaseMapper.selectPage(page, queryWrapper);
         //数据列表

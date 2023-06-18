@@ -15,7 +15,7 @@ import java.util.List;
  * @author mph
  * @version 1.0
  * @date 2023/6/14 16:44
- * @description TODO
+ * @description 课程分类接口测试
  */
 @SpringBootTest
 class CourseCategoryMapperTest {

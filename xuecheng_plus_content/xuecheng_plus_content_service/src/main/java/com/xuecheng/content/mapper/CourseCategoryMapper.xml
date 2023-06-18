@@ -15,8 +15,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id
-        , name, label, parentid, is_show, orderby, is_leaf
+        id, name, label, parentid, is_show, orderby, is_leaf
     </sql>
 
     <select id="selectTreeNodes" parameterType="string"

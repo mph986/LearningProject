@@ -4,7 +4,7 @@ package com.xuecheng.base.exception;
  * @author mph
  * @version 1.0
  * @date 2023/6/15 15:19
- * @description TODO
+ * @description 本项目异常
  */
 public class XueChengPlusException extends RuntimeException {
 
